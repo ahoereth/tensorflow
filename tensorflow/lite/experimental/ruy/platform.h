@@ -91,13 +91,7 @@ limitations under the License.
 // TODO(b/138433137) Select x86 enhancements at runtime rather than via compile
 // options.
 //
-#if RUY_USE_X86_ENHANCEMENTS && RUY_PLATFORM(X86) && defined(__AVX512F__) &&   \
-    defined(__AVX512DQ__) && defined(__AVX512CD__) && defined(__AVX512BW__) && \
-    defined(__AVX512VL__)
-#define RUY_DONOTUSEDIRECTLY_AVX512 1
-#else
 #define RUY_DONOTUSEDIRECTLY_AVX512 0
-#endif
 
 #if RUY_USE_X86_ENHANCEMENTS && RUY_PLATFORM(X86) && defined(__AVX2__)
 #define RUY_DONOTUSEDIRECTLY_AVX2 1

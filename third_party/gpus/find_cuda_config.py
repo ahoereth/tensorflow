@@ -176,6 +176,8 @@ def _header_paths():
       "include/*-linux-gnu",
       "extras/CUPTI/include",
       "include/cuda/CUPTI",
+      "targets/x86_64-linux/include",
+      "/usr/local/cuda-11.0/include",
   ]
 
 
@@ -344,17 +346,22 @@ def _find_cudnn_config(base_paths, required_version):
         for name in ("CUDNN_MAJOR", "CUDNN_MINOR", "CUDNN_PATCHLEVEL"))
     return ".".join(version)
 
-  header_path, header_version = _find_header(base_paths, "cudnn.h",
-                                             required_version,
-                                             get_header_version)
-  cudnn_version = header_version.split(".")[0]
+  # header_path, header_version = _find_header(base_paths, "cudnn.h",
+  #                                            required_version,
+  #                                            get_header_version)
+  # cudnn_version = header_version.split(".")[0]
 
-  library_path = _find_library(base_paths, "cudnn", cudnn_version)
+  # library_path = _find_library(base_paths, "cudnn", cudnn_version)
 
+  # return {
+  #     "cudnn_version": cudnn_version,
+  #     "cudnn_include_dir": os.path.dirname(header_path),
+  #     "cudnn_library_dir": os.path.dirname(library_path),
+  # }
   return {
-      "cudnn_version": cudnn_version,
-      "cudnn_include_dir": os.path.dirname(header_path),
-      "cudnn_library_dir": os.path.dirname(library_path),
+      "cudnn_version": "8.0.2",
+      "cudnn_include_dir": "/usr/local/cuda-11.0/lib64",
+      "cudnn_library_dir": "/usr/local/cuda-11.0/include",
   }
 
 
